@@ -1,3 +1,30 @@
-<p>
-  widgets works!
+<h1 [style.color]="myColor" (click)="setMyColor('red')">Some Color</h1>
+<p [ngStyle]="{'font-size': textSize + 'px', 'font-weight': 'bold', 'color': textColor}">
+  widgets works!<br>
+  and {{testWidgetService()}}
 </p>
+<hr>
+<div *ngFor="let c of colors" [style.backgroundColor]="c">
+  {{c}}
+</div>
+<hr>
+<div *ngFor="let c of colors; let i = index" [style.backgroundColor]="c">
+  {{c}} - {{i}}
+</div>
+<hr>
+<input type="text" name="text-color" [(ngModel)]="textColor">
+<button (click)="textSize = textSize + 1" name="upSize">+</button>
+<button (click)="textSize = textSize - 1" name="downSize">-</button>
+<hr [ngStyle]="{'border-top-color': myColor}">
+<input type="text" [(ngModel)]="myColor" #colorInput>
+<hr>
+<form novalidate #myForm="ngForm">
+  <input required name ="validInput" type="text" placholder="fill to validate" [(ngModel)]="textColor">
+</form>
+<div *ngIf="!myForm.valid">
+  <p>Fix your form Sucka!</p>
+</div>
+<div *ngIf="myForm.valid">
+  <pre>{{myForm.valid | json}}</pre>
+  <pre>{{myForm.value | json}}</pre>
+</div>

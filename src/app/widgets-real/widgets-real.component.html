@@ -1,0 +1,34 @@
+<div class="mdl-grid widgets">
+	<div class="mdl-cell mdl-cell--6-col">
+		<div (mouseenter)="selectWidget(widget)" class="widget-card mdl-card mdl-shadow--2dp" *ngFor="let widget of widgets">
+      <img [src]="widget.img" [alt]="widget.name" width="100" height="100">
+      <div>
+				<div class="mdl-card__title">
+					<h2 class="mdl-card__title-text">{{widget.name}}</h2>
+				</div>
+				<div class="mdl-card__supporting-text">
+          {{widget.description}}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="mdl-cell mdl-cell--6-col">
+			<div class="widget-card mdl-card mdl-shadow--2dp">
+				<div class="mdl-card__title">
+					<h2 class="mdl-card__title-text">Select a Widget</h2>
+				</div>
+        <img *ngIf="selectedWidget?.img" [src]="selectedWidget?.img" [alt]="selectedWidget?.name" width="100" height="100">
+        <div class="mdl-card__title">
+					<h2 class="mdl-card__title-text">{{selectedWidget?.name}}</h2>
+				</div>
+        <div class="mdl-card__supporting-text">
+          {{selectedWidget?.description}}
+				</div>
+				<div class="mdl-card__actions">
+					<button type="button" (click)="selectedWidget = undefined" class="mdl-button mdl-js-button mdl-js-ripple-effect">Cancel</button>
+				</div>
+			</div>
+      <div *ngIf="!selectedWidget"><h3>No Widget Selected</h3></div>
+	</div>
+</div>

@@ -1,0 +1,8 @@
+<button type="button" name="show-1" (click)="showPara1 = true; showPara2 = false">Show Paragraph 1</button>
+<button type="button" name="show-2" (click)="showPara2 = true; showPara1 = false">Show Paragraph 2</button>
+<p *ngIf="showPara1">
+  This is paragraph one.
+</p>
+<p *ngIf="showPara2">
+  This is paragraph two.
+</p>
